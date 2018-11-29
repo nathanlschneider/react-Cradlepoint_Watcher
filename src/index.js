@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import Loader from './Loader';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <div className="app-container">
         <App />
+        <Loader />
     </div>,
     document.getElementById('root')
 );

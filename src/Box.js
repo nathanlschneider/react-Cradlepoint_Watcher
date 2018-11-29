@@ -17,7 +17,9 @@ export default class Box extends Component {
     }
 
     componentDidMount() {
+        const loader = document.querySelector('.loader-container');
         const device = document.querySelector('.device-box');
+        loader.classList.add('fade-out-no-display');
         if (this.props.conType !== 'LTE') {
             device.style.display = "none";
         }

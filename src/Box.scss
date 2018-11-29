@@ -1,30 +1,42 @@
-
 .device-box {
-   
     height: 150px;
     width: 150px;
     background-color: grey;
     color: white;
     padding: 2px;
-    margin: 10px;   
-    animation: .3s loader;
+    margin: 10px;
+    animation: 0.3s loader;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     transition-duration: 2s;
-    
-    .device-name {
 
+    .device-name {
     }
 
     .device-conType {
-
     }
 
     .device-status {
-
     }
+}
 
+.fade-out-no-display {
+    animation: 1s fade-out-no-display;
+    animation-fill-mode: both;
+}
+
+@keyframes fade-out-no-display {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }
