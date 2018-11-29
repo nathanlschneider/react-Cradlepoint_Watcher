@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Box from './Box';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: []
+        };
+    }
+    componentDidMount() {
+        const socket = new WebSocket('ws://localhost:5556/connect');
+      socket.addEventListener('message', m => {
+            this.setState({ data: JSON.parse(m.data) });
+        });
+    }
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+      return this.state.data.map((datum, index) => {
+            if (datum !== null && datum.account !== null) {
+                return (
+                    <Box
+                        key={index}
+                        name={datum.name}
+                        status={datum.state}
+                        account={datum.account}
+                        conType={datum.conType}
+                    />
+                );
+            }
+            return null;
+        });
+    } 
 }
 
 export default App;
