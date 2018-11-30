@@ -1,8 +1,26 @@
+///typography//////////////////////////////////////////
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+* { font-family: 'Ubuntu', sans-serif; }
+///colors//////////////////////////////////////////////
+$box-grey-bg: #646363;
+$box-secondary-bg: #a69d9d;
+$box-blue-bg: #3073B1;
+$box-light: #d0d0d0;
+$box-dark: black;
+$box-good: #64f673;
+$box-bad: #f66464;
+//////////////////////////////////////////////////////
+
+.box-blue-bg {
+background-color: $box-blue-bg !important;
+}
+
+
+
 .device-box {
-    height: 150px;
-    width: 150px;
-    background-color: grey;
-    color: white;
+    height: 300px;
+    width: 300px;
+    background-color: $box-grey-bg;
     padding: 2px;
     margin: 10px;
     animation: 0.3s loader;
@@ -10,16 +28,33 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 20px;
     transition-duration: 2s;
 
     .device-name {
+        font-size: 120px;
+        color: $box-light;
     }
 
     .device-conType {
+      color: $box-good;
+        font-size: 72px;
     }
-
-    .device-status {
+    
+    .secondary {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $box-secondary-bg;
+      width: 100%;
+      height: 100%;
+      border-radius: 0 0 20px 20px;
+      
+        .device-status {
+            text-transform: capitalize;
+            font-size: 48px;
+            color: $box-dark;
+        }
     }
 }
 

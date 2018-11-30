@@ -6,31 +6,34 @@ export default class Box extends Component {
         super(props);
         this.state = {
             data: null,
-          };
+            size: null
+        };
     }
 
     static defaultProps = {
-        name: 'unknown',
-        conType: 'unknown',
-        status: 'unknown',
-        account: 'unknown',
-    }
+        name: '--',
+        conType: '--',
+        status: '--',
+        account: '--',
+    };
 
     componentDidMount() {
-        const loader = document.querySelector('.loader-container');
-        const device = document.querySelector('.device-box');
-        loader.classList.add('fade-out-no-display');
-        if (this.props.conType !== 'LTE') {
-            device.style.display = "none";
-        }
+        this.setState({ size: this.props.size });
+
     }
 
     render() {
         return (
-            <div className="device-box" style={{display: this.props.conType !== 'LTE' ? 'none' : 'flex'}}>
-                <div className="device-name"><h1>{this.props.name}</h1></div>
-                <div className="device-conType">{this.props.conType}</div>
-                <div className="device-status">Status: {this.props.status}</div>
+            <div className="box-wrapper" style={{ opacity: this.props.status === 'offline' ? '.4' : '1' }}>
+                <div className="device-box" style={{ background: this.props.account === '28784' ? '#3073B1' : null }}>
+                    <div className="device-name">{this.props.name}</div>
+                    <div className="device-conType" style={{ color: this.props.conType === 'LTE' ? '#f66464' : null }}>
+                        {this.props.conType}
+                    </div>
+                    <div className="secondary">
+                        <div className="device-status">{this.props.status}</div>
+                    </div>
+                </div>
             </div>
         );
     }

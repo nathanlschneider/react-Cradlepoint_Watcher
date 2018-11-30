@@ -1,28 +1,19 @@
 import React, { Component } from 'react';
 import Box from './Box';
-import Alerter from './Alerter';
-//import Loader from './Loader';
+import Footer from './Footer';
+
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: [],
             error: false,
-            errorMessage: null
+            errorMessage: null,
+            size: 1
         };
     }
     componentDidMount() {
         const socket = new WebSocket('ws://localhost:5556/connect');
-
-        socket.onerror = event => {
-            console.log('onerror', event);
-            this.setState({ error: true, errorMessage: 'server connection: ' + event.type });
-        };
-
-        socket.onclose = event => {
-            console.log('onclose', event);
-            this.setState({ error: true, errorMessage: 'server connection: ' + event.type });
-        };
 
         socket.addEventListener('message', m => {
             console.log(m);
@@ -30,24 +21,29 @@ class App extends Component {
         });
     }
     render() {
-        if (this.state.error) {
-            return <Alerter data={this.state.errorMessage} />;
-        }
-        return this.state.data.map((datum, index) => {
+        // eslint-disable-next-line
+        let boxes = this.state.data.map((datum, index) => {
             if (datum !== null && datum.account !== null) {
                 return (
-                    <Box
-                        key={index}
-                        name={datum.name}
-                        status={datum.state}
-                        account={datum.account}
-                        conType={datum.conType}
-                    />
+                    <div>
+                        <Box
+                            key={index}
+                            name={datum.name}
+                            status={datum.state}
+                            account={datum.account}
+                            conType={datum.conType}
+                        />
+                    </div>
                 );
             }
-            return null;
         });
+
+        return (
+            <div>
+                {boxes}
+                <Footer />
+            </div>
+        );
     }
 }
-
 export default App;
