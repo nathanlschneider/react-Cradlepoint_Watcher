@@ -7,7 +7,8 @@ export default class Box extends Component {
         this.state = {
             data: null,
             size: null,
-            filter: null
+            filter: null,
+            initialRender: null
         };
     }
     
@@ -20,16 +21,23 @@ export default class Box extends Component {
     };
     
     componentDidMount() {
-        //this.setState({ size: this.props.slideValue });
 
     }
 //transform: `scale(${this.props.size / 100})`
     render() {
         return (
-            <div className="box-wrapper" style={{zoom :`${this.props.size}`, opacity: this.props.status === 'offline' ? '.3' : '1'}}>
-                <div className="device-box" style={{ background: this.props.account === '28784' ? '#3073B1' : null }}>
+            <div className="box-wrapper" style={{
+                zoom: `${this.props.size}%`,
+                opacity: this.props.status === 'offline' ? '.3' : '1',
+                animation: this.props.initialRender ? null : `43200s long-color-fade`
+            }}>
+                <div className="device-box" style={{
+                    background: this.props.account === '28784' ? '#3073B1' : null
+                }}>
                     <div className="device-name">{this.props.name}</div>
-                    <div className="device-conType" style={{ color: this.props.conType === 'LTE' ? '#f66464' : null }}>
+                    <div className="device-conType" style={{
+                        color: this.props.conType === 'LTE' ? '#f66464' : null
+                    }}>
                         {this.props.conType}
                     </div>
                     <div className="secondary">

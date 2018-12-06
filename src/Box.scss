@@ -19,22 +19,25 @@ background-color: $box-blue-bg !important;
     
 }
 
+
+
 .device-box {
-    height: 300px;
-    width: 300px;
+    align-items: center;
+   
     background-color: $box-grey-bg;
-    margin: 10px;
-    animation: 0.3s loader;
+    border: 10px solid #232323;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
+    height: 300px;
     justify-content: center;
-    align-items: center;
-    border-radius: 20px;
+    margin: 10px;
     transition-duration: 2s;
+    width: 300px;
 
     .device-name {
-        font-size: 120px;
         color: $box-light;
+        font-size: 120px;
     }
 
     .device-conType {
@@ -64,6 +67,20 @@ background-color: $box-blue-bg !important;
     animation-fill-mode: both;
 }
 
+.long-color-fade {
+    animation: 43200s long-color-fade;
+    animation-fill-mode: both;
+}
+
+@keyframes long-color-fade {
+    0%{border-color: rgb(214, 246, 100)}
+    25%{border-color: rgb(246, 207, 100)}
+    50%{border-color: rgb(246, 100, 100)}
+    75%{border-color: rgb(100, 122, 246)}
+    100%{border-color: rgb(45, 4, 139)}
+}
+
+
 @keyframes fade-out-no-display {
     0% {
         opacity: 1;
@@ -76,3 +93,5 @@ background-color: $box-blue-bg !important;
         display: none;
     }
 }
+
+
