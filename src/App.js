@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Box from './Box';
 import Footer from './Footer';
+//import Slider from './Slider';
 
 class App extends Component {
     constructor(props) {
@@ -9,21 +10,29 @@ class App extends Component {
             data: [],
             error: false,
             errorMessage: null,
-            size: 1
+            filter: null,
+            slideValue: 100
         };
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange(event) {
+        this.setState({ slideValue: event.target.value });
+        console.log(this.state.slideValue)
+    }
+
     componentDidMount() {
         const socket = new WebSocket('ws://localhost:5556/connect');
 
         socket.addEventListener('message', m => {
-            console.log(m);
             this.setState({ data: JSON.parse(m.data) });
         });
     }
+
     render() {
         // eslint-disable-next-line
         let boxes = this.state.data.map((datum, index) => {
-            if (datum !== null && datum.account !== null) {
+            if (datum !== null && datum.account !== null && datum.conType === 'LTE') {
                 return (
                     <div>
                         <Box
@@ -32,6 +41,8 @@ class App extends Component {
                             status={datum.state}
                             account={datum.account}
                             conType={datum.conType}
+                            size={this.state.slideValue}
+                            filter={this.state.filter}
                         />
                     </div>
                 );
@@ -39,10 +50,10 @@ class App extends Component {
         });
 
         return (
-            <div>
+            <React.Fragment>
                 {boxes}
-                <Footer />
-            </div>
+                <Footer slider={<input type="range" min="1" max="100" step="1" value={this.state.slideValue} onChange={this.handleChange} />} />
+            </React.Fragment>
         );
     }
 }

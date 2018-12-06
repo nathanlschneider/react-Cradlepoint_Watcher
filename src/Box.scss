@@ -14,14 +14,15 @@ $box-bad: #f66464;
 .box-blue-bg {
 background-color: $box-blue-bg !important;
 }
-
-
+.box-wrapper{
+    overflow: hidden;
+    
+}
 
 .device-box {
     height: 300px;
     width: 300px;
     background-color: $box-grey-bg;
-    padding: 2px;
     margin: 10px;
     animation: 0.3s loader;
     display: flex;
