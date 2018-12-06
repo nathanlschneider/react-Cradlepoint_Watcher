@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Box from './Box';
 import Footer from './Footer';
 import Loader from './Loader';
-import Alerter from './Alerter'
+import Alerter from './Alerter';
 
 class App extends Component {
     constructor(props) {
@@ -25,13 +25,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const socket = new WebSocket('ws://localhost:5556/connect');
-        this.setState({
-            initialRender: false,
-            slideValue: localStorage.slideValue,
-            loading: true,
-            error: false
-        });
+        const socket = new WebSocket('ws://inspire.gr.mhgi.net:5556/connect');
 
         socket.addEventListener('message', m => {
             this.setState({
@@ -40,13 +34,22 @@ class App extends Component {
             });
         });
 
-        socket.onclose = (event) => {
-            this.setState({error: true})
-        }
+        socket.onopen = event => {
+            this.setState({
+                initialRender: false,
+                slideValue: localStorage.slideValue,
+                loading: true,
+                error: false
+            });
+        };
 
-        socket.onerror = (event) => {
-            this.setState({error: true})
-        }
+        socket.onclose = event => {
+            this.setState({ error: true });
+        };
+
+        socket.onerror = event => {
+            this.setState({ error: true });
+        };
     }
 
     render() {
@@ -85,8 +88,8 @@ class App extends Component {
                         />
                     }
                 />
-                <Alerter data="Connection Error"/>
-                <Loader loading={this.state.loading}/>
+                <Alerter data="Connection Error" />
+                <Loader loading={this.state.loading} />
             </React.Fragment>
         );
     }
