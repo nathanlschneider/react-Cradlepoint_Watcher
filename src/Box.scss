@@ -23,7 +23,6 @@ background-color: $box-blue-bg !important;
 
 .device-box {
     align-items: center;
-   
     background-color: $box-grey-bg;
     border: 10px solid #232323;
     border-radius: 20px;
@@ -67,12 +66,8 @@ background-color: $box-blue-bg !important;
     animation-fill-mode: both;
 }
 
-.long-color-fade {
-    animation: 43200s long-color-fade;
-    animation-fill-mode: both;
-}
 
-@keyframes long-color-fade {
+@keyframes longColorFade {
     0%{border-color: rgb(214, 246, 100)}
     25%{border-color: rgb(246, 207, 100)}
     50%{border-color: rgb(246, 100, 100)}
