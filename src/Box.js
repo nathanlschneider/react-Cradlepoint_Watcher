@@ -49,13 +49,8 @@ export default class Box extends Component {
                     >
                         {this.props.conType} {this.state.changeCounter !== 0 ? this.state.changeCounter : null}
                     </div>
-                    <div className="secondary">
-                        <div
-                            className="device-status"
-                            style={{ animation: this.state.change ? 'longColorFade 28800s' : null }}
-                        >
-                            {this.props.status}
-                        </div>
+                    <div className="secondary" style={{ animation: this.state.change ? 'longColorFade 28800s' : null }}>
+                        <div className="device-status">{this.props.status}</div>
                     </div>
                 </div>
             </div>
