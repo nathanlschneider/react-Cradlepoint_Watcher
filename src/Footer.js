@@ -16,7 +16,7 @@ export default class Footer extends Component {
     render() {
         return (
             <nav className="nav-bar">
-                <h1 className="logo">Cradlepoint Watcher v.04</h1>
+                <h1 className="logo">Cradlepoint Watcher v.06</h1>
                 <div className="menu-button" style={{ display: 'none' }}>
                     <div className="menu-button-bar" />
                     <div className="menu-button-bar" />

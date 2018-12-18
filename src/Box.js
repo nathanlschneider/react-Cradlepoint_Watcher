@@ -7,18 +7,23 @@ export default class Box extends Component {
             change: false,
             data: null,
             size: null,
-            filter: 'LTE'
+            filter: 'LTE',
+            changeCounter: 0
         };
     }
 
+    componentDidMount() {}
+
     componentDidUpdate(prevProps) {
         if (prevProps.conType !== this.props.conType) {
-            this.setState({change: true})
+            this.setState({ change: true });
+            this.setState({ changeCounter: this.state.changeCounter + 1 });
+            console.log(Date(), prevProps, this.props);
         }
     }
 
     render() {
-        if (this.props.conType !== this.state.filter) {
+        if (this.props.conType !== this.state.filter || this.props.name === '904') {
             return null;
         }
         return (
@@ -32,8 +37,7 @@ export default class Box extends Component {
                 <div
                     className="device-box"
                     style={{
-                        background: this.props.account === '28784' ? '#3073B1' : null,
-                        animation: this.state.change ? 'longColorFade 28800s' : null
+                        background: this.props.account === '28784' ? '#3073B1' : null
                     }}
                 >
                     <div className="device-name">{this.props.name}</div>
@@ -43,10 +47,15 @@ export default class Box extends Component {
                             color: this.props.conType === 'LTE' ? '#f66464' : null
                         }}
                     >
-                        {this.props.conType}
+                        {this.props.conType} {this.state.changeCounter !== 0 ? this.state.changeCounter : null}
                     </div>
                     <div className="secondary">
-                        <div className="device-status">{this.props.status}</div>
+                        <div
+                            className="device-status"
+                            style={{ animation: this.state.change ? 'longColorFade 28800s' : null }}
+                        >
+                            {this.props.status}
+                        </div>
                     </div>
                 </div>
             </div>

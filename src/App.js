@@ -26,8 +26,8 @@ class App extends Component {
 
     componentDidMount() {
         const connect = () => {
-//            const socket = new WebSocket('ws://inspire.gr.mhgi.net:5556/connect');
-              const socket = new WebSocket('ws://localhost:5556/connect');
+           const socket = new WebSocket('ws://inspire.gr.mhgi.net:5556/connect');
+             //const socket = new WebSocket('ws://localhost:5556/connect');
 
 
             socket.addEventListener('message', m => {

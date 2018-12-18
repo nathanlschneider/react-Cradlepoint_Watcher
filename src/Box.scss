@@ -1,10 +1,12 @@
 ///typography//////////////////////////////////////////
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
-* { font-family: 'Ubuntu', sans-serif; }
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
 ///colors//////////////////////////////////////////////
 $box-grey-bg: #646363;
 $box-secondary-bg: #a69d9d;
-$box-blue-bg: #3073B1;
+$box-blue-bg: #3073b1;
 $box-light: #d0d0d0;
 $box-dark: black;
 $box-good: #64f673;
@@ -12,19 +14,15 @@ $box-bad: #f66464;
 //////////////////////////////////////////////////////
 
 .box-blue-bg {
-background-color: $box-blue-bg !important;
+    background-color: $box-blue-bg !important;
 }
-.box-wrapper{
+.box-wrapper {
     overflow: hidden;
-    
 }
-
-
 
 .device-box {
     align-items: center;
     background-color: $box-grey-bg;
-    border: 10px solid #232323;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -40,19 +38,19 @@ background-color: $box-blue-bg !important;
     }
 
     .device-conType {
-      color: $box-good;
+        color: $box-good;
         font-size: 72px;
     }
-    
+
     .secondary {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: $box-secondary-bg;
-      width: 100%;
-      height: 100%;
-      border-radius: 0 0 20px 20px;
-      
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $box-secondary-bg;
+        width: 100%;
+        height: 100%;
+        border-radius: 0 0 20px 20px;
+
         .device-status {
             text-transform: capitalize;
             font-size: 48px;
@@ -66,15 +64,23 @@ background-color: $box-blue-bg !important;
     animation-fill-mode: both;
 }
 
-
 @keyframes longColorFade {
-    0%{border-color: rgb(214, 246, 100)}
-    25%{border-color: rgb(246, 207, 100)}
-    50%{border-color: rgb(246, 100, 100)}
-    75%{border-color: rgb(100, 122, 246)}
-    100%{border-color: rgb(45, 4, 139)}
+    0% {
+        border-color: rgb(209, 243, 88);
+    }
+    25% {
+        border-color: rgb(248, 195, 48);
+    }
+    50% {
+        border-color: rgb(230, 30, 30);
+    }
+    75% {
+        border-color: rgb(223, 42, 193);
+    }
+    100% {
+        border-color: rgb(110, 2, 252);
+    }
 }
-
 
 @keyframes fade-out-no-display {
     0% {
@@ -88,5 +94,3 @@ background-color: $box-blue-bg !important;
         display: none;
     }
 }
-
-
