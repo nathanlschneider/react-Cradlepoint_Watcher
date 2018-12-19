@@ -1,0 +1,17 @@
+@import './colors.scss';
+
+.color-key {
+    height: 20px;
+    width: 500px;
+    background: linear-gradient(90deg, $p0 0%, $p25 25%, $p50 50%, $p75 75%, $p100 100%);
+}
+
+.key-container {
+    display: flex;
+    flex-direction: column;
+    .key-hours {
+        display: flex;
+        font-size: 24px;
+        justify-content: space-between;
+    }
+}

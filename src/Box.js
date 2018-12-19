@@ -23,7 +23,7 @@ export default class Box extends Component {
     }
 
     render() {
-        if (this.props.conType !== this.state.filter || this.props.name === '904') {
+        if (this.props.conType !== this.state.filter || this.props.name === '904' || this.props.name === '906'  || this.props.name.length > 3) {
             return null;
         }
         return (
